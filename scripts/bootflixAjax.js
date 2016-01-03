@@ -8,7 +8,31 @@
 // this gets called by pre-written event handlers
 app.getMovieById = function getMovieById(id) {
 
-    console.log("app.getMovieById() called w/ ID of " + id);
+    console.log("getMovieById() called w/ ID: " + id);
+
+    // create ajax call url
+    var urlById = 'http://www.omdbapi.com/?i=' + id + '&plot=full&r=json';
+    console.log(urlById);
+
+    $.ajax({
+        type: 'get',
+        url: urlById,
+        success: function(data) {
+        console.log('we got data from api!');
+        console.table(data);
+
+        // create new MovieModel object with data
+        var movie = new app.MovieModel(data);
+        console.log(movie);
+
+        // create new MovieView passing data from model & render to page
+        var view = new app.MovieView(movie);
+        view.render();
+        },
+        error: function() {
+        console.log('ajax call didn\'t work');
+        }
+    });
 
 }
 
@@ -43,7 +67,6 @@ app.getMovieByTitle = function getMovieByTitle(title) {
         var view = new app.MovieView(movie);
         view.render();
         },
-
         error: function() {
         console.log('ajax call didn\'t work');
         }
@@ -100,11 +123,9 @@ app.MovieView = function MovieView(options) {
 
     this.render = function() {
 
-        var viewHtml = '<div class="movie"><table><tr><td><img src="' + this.poster + '" alt="' + this.title + '"></td><td><h3>' + this.title + '</h3><p><strong>Released:</strong> ' + this.year + '<br><strong>Directed By:</strong> ' + this.director + '<br><em>' + this.genre + '</em></p><p>' + this.plot + '</p></td></tr></table></div>';
+        var viewHtml = '<div class="movie"><table><tr><td><img src="' + this.poster + '" alt="' + this.title + '"></td><td class="movie-info"><h2>' + this.title + '</h2><p><strong>Released:</strong> ' + this.year + '<br><strong>Directed By:</strong> ' + this.director + '<br><em>' + this.genre + '</em></p><p>' + this.plot + '</p></td></tr></table></div>';
 
-        // sample_code - no str error but ...
-        // var viewHtml = $('<div class="movie">  <table> <tr><td><img src="'+this.Poster+'" alt="'+this.Title+'""></td><td><h3>'+this.Title+'</h3><p><strong>Released:</strong>'+this.Year+'<br><strong>Directed By:</strong>'+this.Director+'<br><em>'+this.Genre+'</em></p><p>'+this.Plot+'</p></td></tr></table></div>');
-
+        document.getElementById('movie-listing').innerHTML = '';
         $('#movie-listing').append(viewHtml);
 
     }

@@ -12,25 +12,25 @@
   <body>
     <header>
         <hgroup>
-            <h2>Bootflix (alpha)</h2>
-            <h3>powered by <a href="http://www.omdbapi.com/" target="_blank">omdb</a></h3>
+            <h1>Bootflix Movie Search</h1>
+            <h3>powered by <a href="http://www.omdbapi.com/" target="_blank"><img id="imdb_logo" src="media/imdb_logo.png" alt="imdb logo"></a></h3>
         </hgroup>
     </header>
-
+    <img src="" alt="" />
     <section id="movie-search">
-      <strong>Search by:</strong> Title <em>or</em> ID
+      <h3><strong>Search by: Title or ID</strong></h3>
 
       <div class="search">
         <form id="title-search-form" method="get">
           <input type="text" name="title" placeholder="Enter movie title">
-          <input type="submit" value="Search for this title">
+          <input class="sbmt-btn" type="submit" value="Search">
         </form>
       </div>
 
       <div class="search">
         <form id="id-search-form" method="get">
           <input type="text" name="id" placeholder="Enter omdb movie ID">
-          <input type="submit" value="Search by ID">
+          <input class="sbmt-btn" type="submit" value="Search">
         </form>
       </div>
 

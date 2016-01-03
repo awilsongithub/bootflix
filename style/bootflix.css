@@ -12,13 +12,16 @@ header {
   );
   color: white;
   padding: 8px;
-  height: 88px;
+  height: 100px;
   /*box-shadow: 2px 0px 2px 2px navy;*/
 }
-header h2 {
-    text-shadow: 2px 2px 2px navy;
+header h2, h3, h1 {
+    /*text-shadow: 2px 2px 2px navy;*/
     margin-top: 8px;
     margin-bottom: 8px;
+}
+h3 {
+    margin-top: 0px;
 }
 header a {
   color: aliceblue;
@@ -33,13 +36,22 @@ section:first-of-type {
 .movie {
     margin: 8px;
     color: black;
-    box-shadow: 0px 0px 1px 1px navy;
+    /*box-shadow: 0px 0px 1px 1px navy;*/
     border-radius: 3px;
+}
+.movie-info {
+    max-width: 400px;
 }
 td {
     vertical-align: top;
     padding: .5em;
 }
-search {
-    padding: .5em;
+.search {
+    /*font-size: 1.5em;*/
+}
+.sbmt-btn {
+    background-color: #D7BC47;
+}
+/*input {
+    font-size: 1.25em;
 }
